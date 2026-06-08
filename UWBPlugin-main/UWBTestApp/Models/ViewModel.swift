@@ -13,7 +13,7 @@ class ViewModel {
     let availableMaps = ["casa.json", "campus4sensors.json", "campusTest.json", "315b.json"]
     var selectedMap: String = "casa.json"
 
-    private let connectionLimit = 6
+    private let connectionLimit = 100
     private let connectionTimeout = 10.0
     private let refreshRate: Float = 0.1
 

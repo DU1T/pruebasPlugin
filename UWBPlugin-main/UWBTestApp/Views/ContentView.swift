@@ -11,6 +11,7 @@ struct ContentView: View {
         NavigationStack {
             List {
                 mapSection
+                filterSection
                 sensorsSection
                 positionSection
             }
@@ -35,6 +36,45 @@ struct ContentView: View {
                 }
             }
             .pickerStyle(.menu)
+        }
+    }
+
+    private var filterSection: some View {
+        Section {
+            Toggle(
+                "Filtrar por distancia",
+                isOn: Binding(
+                    get: { viewModel.state.distanceFilterEnabled },
+                    set: { viewModel.state.distanceFilterEnabled = $0 }
+                )
+            )
+
+            if viewModel.state.distanceFilterEnabled {
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        Text("Distancia máxima")
+                        Spacer()
+                        Text(String(format: "%.1f m", viewModel.state.maxConnectionDistance))
+                            .foregroundStyle(.secondary)
+                            .monospacedDigit()
+                    }
+                    Slider(
+                        value: Binding(
+                            get: { viewModel.state.maxConnectionDistance },
+                            set: { viewModel.state.maxConnectionDistance = $0 }
+                        ),
+                        in: 0.5...20.0,
+                        step: 0.5
+                    )
+                }
+            }
+        } header: {
+            Text("Filtro de distancia")
+        } footer: {
+            if viewModel.state.distanceFilterEnabled {
+                Text("Sensores a más de \(String(format: "%.1f", viewModel.state.maxConnectionDistance))m se desconectan. Pueden reconectarse tras 5 segundos si vuelven al rango.")
+                    .font(.caption)
+            }
         }
     }
 

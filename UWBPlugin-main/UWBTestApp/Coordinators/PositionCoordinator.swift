@@ -22,6 +22,11 @@ class PositionCoordinator {
     var uwbManager: UWBManager?
     var accelerometerManager: AccelerometerManager?
 
+    // Distance filter: tracks when each sensor was disconnected for being out of range
+    // Key: deviceId, Value: timestamp of disconnection
+    private var distanceCooldowns: [String: TimeInterval] = [:]
+    private let reconnectCooldown: Double = 5.0
+
     init(state: AppState, anchorsPositions: [String: Vector3D], connectionLimit: Int, connectionTimeout: Double) {
         self.state = state
         self.anchorsPositions = anchorsPositions
@@ -71,6 +76,16 @@ extension PositionCoordinator: UWBManagerDelegate {
 
         guard anchorsPositions.keys.contains(deviceId) else { return }
 
+        // Check distance cooldown: if the sensor was recently disconnected for being
+        // out of range, wait before attempting to reconnect
+        if let cooldownStart = distanceCooldowns[deviceId] {
+            let elapsed = Date().timeIntervalSince1970 - cooldownStart
+            if elapsed < reconnectCooldown {
+                return  // still in cooldown, update RSSI but don't reconnect
+            }
+            distanceCooldowns.removeValue(forKey: deviceId)
+        }
+
         updateUI {
             self.state.discoveredDevices[deviceId] = rssi
         }
@@ -81,20 +96,44 @@ extension PositionCoordinator: UWBManagerDelegate {
     }
 
     func didUpdatePosition(deviceId: String, distance: Double) {
-        let anchor = getAnchor(deviceID: deviceId, distance: distance)
-        _anchors[deviceId] = anchor
-
-        let now = Date().timeIntervalSince1970
-        _anchors = _anchors.filter { (_, a) in
-            guard let timestamp = a.timestamp else { return true }
-            return now - timestamp <= connectionTimeout
+        // 1. Distance filter: if enabled and sensor is beyond threshold, disconnect it
+        if state.distanceFilterEnabled && distance > state.maxConnectionDistance {
+            distanceCooldowns[deviceId] = Date().timeIntervalSince1970
+            uwbManager?.disconnectFrom(deviceId: deviceId)
+            _anchors.removeValue(forKey: deviceId)
+            _connectedDevices.remove(deviceId)
+            updateUI {
+                self.state.connectedDevices.remove(deviceId)
+                self.state.distances.removeValue(forKey: deviceId)
+            }
+            print("Sensor \(deviceId.suffix(8)) out of range (\(String(format: "%.2f", distance))m > \(self.state.maxConnectionDistance)m), disconnecting")
+            return
         }
 
+        // 2. Update anchor with new distance reading
+        _anchors[deviceId] = getAnchor(deviceID: deviceId, distance: distance)
+
+        // 3. Remove expired anchors AND sync _connectedDevices for those that timed out
+        //    This covers the case where didDisconnect was never called (abrupt power-off)
+        let now = Date().timeIntervalSince1970
+        var expiredIds: [String] = []
+        _anchors = _anchors.filter { (id, a) in
+            guard let ts = a.timestamp else { return true }
+            let active = now - ts <= connectionTimeout
+            if !active { expiredIds.append(id) }
+            return active
+        }
+        for id in expiredIds {
+            _connectedDevices.remove(id)
+        }
+
+        // 4. Build current distances from all active anchors
         var newDistances: [String: Double] = [:]
         for (id, a) in _anchors {
             newDistances[id] = a.distance
         }
 
+        // 5. Trilateration + Kalman filter
         var newFilteredPos: Vector2D? = nil
         if _anchors.count >= 3 {
             let position = do_trilateration(anchors: _anchors)
@@ -104,7 +143,13 @@ extension PositionCoordinator: UWBManagerDelegate {
             print(String(describing: newFilteredPos))
         }
 
+        // 6. Push all UI updates atomically on the main thread
+        let expiredIdsForUI = expiredIds
         updateUI {
+            for id in expiredIdsForUI {
+                self.state.connectedDevices.remove(id)
+                self.state.distances.removeValue(forKey: id)
+            }
             self.state.distances = newDistances
             self.state.filteredPos = newFilteredPos
         }

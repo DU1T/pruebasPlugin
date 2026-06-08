@@ -66,7 +66,15 @@ extension UWBManager: EstimoteUWBManagerDelegate{
         }
     }
     
-    func didDisconnect(from device: UWBIdentifiable, error: Error?){}
-    
-    func didFailToConnect(to device: UWBIdentifiable, error: Error?){}
+    func didDisconnect(from device: UWBIdentifiable, error: Error?) {
+        self.UWBQueue.addOperation {
+            self.delegate.didDisconnect(deviceId: device.publicIdentifier)
+        }
+    }
+
+    func didFailToConnect(to device: UWBIdentifiable, error: Error?) {
+        self.UWBQueue.addOperation {
+            self.delegate.didDisconnect(deviceId: device.publicIdentifier)
+        }
+    }
 }
