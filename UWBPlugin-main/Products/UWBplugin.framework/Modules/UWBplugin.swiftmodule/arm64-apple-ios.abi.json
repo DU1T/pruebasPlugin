@@ -1,0 +1,896 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "UWBplugin",
+    "printedName": "UWBplugin",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "CoreMotion",
+        "printedName": "CoreMotion",
+        "declKind": "Import",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "EstimoteUWB",
+        "printedName": "EstimoteUWB",
+        "declKind": "Import",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "simd",
+        "printedName": "simd",
+        "declKind": "Import",
+        "moduleName": "UWBplugin"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Accelerate",
+        "printedName": "Accelerate",
+        "declKind": "Import",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Function",
+        "name": "solveQuadratic",
+        "printedName": "solveQuadratic(a:b:c:discriminant:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Optional",
+            "printedName": "[Swift.Double]?",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.Double]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "usr": "s:Sq"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Double",
+            "printedName": "Swift.Double",
+            "usr": "s:Sd"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Double",
+            "printedName": "Swift.Double",
+            "usr": "s:Sd"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Double",
+            "printedName": "Swift.Double",
+            "usr": "s:Sd"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Double",
+            "printedName": "Swift.Double",
+            "usr": "s:Sd"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:9UWBplugin14solveQuadratic1a1b1c12discriminantSaySdGSgSd_S3dtF",
+        "mangledName": "$s9UWBplugin14solveQuadratic1a1b1c12discriminantSaySdGSgSd_S3dtF",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "matrixMultiplication",
+        "printedName": "matrixMultiplication(A:rowsOfA:B:colsOfB:sharedDim:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Array",
+            "printedName": "[Swift.Double]",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "usr": "s:Sa"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Array",
+            "printedName": "[Swift.Double]",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "usr": "s:Sa"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Array",
+            "printedName": "[Swift.Double]",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "usr": "s:Sa"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:9UWBplugin20matrixMultiplication1A7rowsOfA1B04colsE1B9sharedDimSaySdGAH_SiAHS2itF",
+        "mangledName": "$s9UWBplugin20matrixMultiplication1A7rowsOfA1B04colsE1B9sharedDimSaySdGAH_SiAHS2itF",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "gaussJordan",
+        "printedName": "gaussJordan(A:n:b:nrhs:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Array",
+            "printedName": "[Swift.Double]",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "usr": "s:Sa"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Array",
+            "printedName": "[Swift.Double]",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "usr": "s:Sa"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "usr": "s:Si"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Array",
+            "printedName": "[Swift.Double]",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "usr": "s:Sa"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Int",
+            "printedName": "Swift.Int",
+            "hasDefaultArg": true,
+            "usr": "s:Si"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:9UWBplugin11gaussJordan1A1n1b4nrhsSaySdGAG_SiAGSitF",
+        "mangledName": "$s9UWBplugin11gaussJordan1A1n1b4nrhsSaySdGAG_SiAGSitF",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Function",
+        "name": "setAnchorMap",
+        "printedName": "setAnchorMap(_:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Optional",
+            "printedName": "Swift.UnsafePointer<Swift.Int8>?",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UnsafePointer",
+                "printedName": "Swift.UnsafePointer<Swift.Int8>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int8",
+                    "printedName": "Swift.Int8",
+                    "usr": "s:s4Int8V"
+                  }
+                ],
+                "usr": "s:SP"
+              }
+            ],
+            "usr": "s:Sq"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "c:(cm)setAnchorMap:",
+        "mangledName": "$s9UWBplugin12setAnchorMapyySPys4Int8VGSgF",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "AccessControl",
+          "CDecl"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "start",
+        "printedName": "start()",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "c:(cm)start",
+        "mangledName": "$s9UWBplugin5startyyF",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "AccessControl",
+          "CDecl"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "getCoords",
+        "printedName": "getCoords()",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "UnsafeMutablePointer",
+            "printedName": "Swift.UnsafeMutablePointer<Swift.Int8>",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int8",
+                "printedName": "Swift.Int8",
+                "usr": "s:s4Int8V"
+              }
+            ],
+            "usr": "s:Sp"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "c:(cm)getCoords",
+        "mangledName": "$s9UWBplugin9getCoordsSpys4Int8VGyF",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "AccessControl",
+          "CDecl"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "freeCString",
+        "printedName": "freeCString(_:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Optional",
+            "printedName": "Swift.UnsafeMutablePointer<Swift.Int8>?",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UnsafeMutablePointer",
+                "printedName": "Swift.UnsafeMutablePointer<Swift.Int8>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int8",
+                    "printedName": "Swift.Int8",
+                    "usr": "s:s4Int8V"
+                  }
+                ],
+                "usr": "s:Sp"
+              }
+            ],
+            "usr": "s:Sq"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "c:(cm)freeCString:",
+        "mangledName": "$s9UWBplugin11freeCStringyySpys4Int8VGSgF",
+        "moduleName": "UWBplugin",
+        "declAttributes": [
+          "AccessControl",
+          "CDecl"
+        ],
+        "funcSelfKind": "NonMutating"
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Coordinators\/PositionCoordinator.swift",
+      "kind": "Array",
+      "offset": 184,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Coordinators\/PositionCoordinator.swift",
+      "kind": "Dictionary",
+      "offset": 223,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Models\/ViewModel.swift",
+      "kind": "StringLiteral",
+      "offset": 186,
+      "length": 11,
+      "value": "\"casa.json\""
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Models\/ViewModel.swift",
+      "kind": "FloatLiteral",
+      "offset": 226,
+      "length": 3,
+      "value": "0.1"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Models\/ViewModel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 257,
+      "length": 3,
+      "value": "100"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Models\/ViewModel.swift",
+      "kind": "FloatLiteral",
+      "offset": 315,
+      "length": 4,
+      "value": "20.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "IntegerLiteral",
+      "offset": 205,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "IntegerLiteral",
+      "offset": 208,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "IntegerLiteral",
+      "offset": 211,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "IntegerLiteral",
+      "offset": 214,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 300,
+      "length": 3,
+      "value": "0.6"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 305,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 310,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 315,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 346,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 351,
+      "length": 3,
+      "value": "0.6"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 356,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 361,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 392,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 397,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 402,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 407,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 438,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 443,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 448,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 453,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 534,
+      "length": 3,
+      "value": "6.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 539,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 544,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 549,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 580,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 585,
+      "length": 3,
+      "value": "6.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 590,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 595,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 626,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 631,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 636,
+      "length": 4,
+      "value": "25.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 642,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 673,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 678,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 683,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 688,
+      "length": 4,
+      "value": "25.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 779,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 784,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 789,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 794,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 826,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 831,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 836,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 841,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 912,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 917,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 953,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 958,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 963,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 968,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1077,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1079,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 1112,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 1117,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Kalman.swift",
+      "kind": "FloatLiteral",
+      "offset": 2805,
+      "length": 3,
+      "value": "1.3"
+    },
+    {
+      "filePath": "\/Users\/gustavogonzalez\/Universidad\/MegaProyecto\/UWBTest\/UWBplugin\/UWBplugin\/Positioning\/Math.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1891,
+      "length": 1,
+      "value": "1"
+    }
+  ]
+}
