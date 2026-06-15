@@ -15,6 +15,11 @@ struct Main: App {
         WindowGroup {
             ContentView()
                 .environment(viewModel)
+                .task {
+                    // Deferred startup: first frame renders immediately showing
+                    // the loading state, then UWB + Bluetooth initialization begins.
+                    viewModel.startIfNeeded()
+                }
         }
     }
 }

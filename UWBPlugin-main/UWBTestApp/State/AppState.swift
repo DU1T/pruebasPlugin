@@ -19,6 +19,11 @@ class AppState {
     var maxConnectionDistance: Double = 5.0          // meters — exclusion threshold
     // Re-inclusion threshold = maxConnectionDistance * hysteresisRatio (set in PositionCoordinator)
 
+    // Sensors that are connected AND within range (used in trilateration)
+    var inRangeSensorCount: Int {
+        connectedDevices.subtracting(outOfRangeDevices).count
+    }
+
     func reset() {
         mapSensors = []
         discoveredDevices = [:]

@@ -102,11 +102,11 @@ struct ContentView: View {
             HStack {
                 Text("Sensores")
                 Spacer()
-                let connected = viewModel.state.connectedDevices.count
+                let inRange = viewModel.state.inRangeSensorCount
                 let total = viewModel.state.mapSensors.count
-                Text("\(connected)/\(total) conectados")
+                Text("\(inRange)/\(total) en rango")
                     .font(.caption)
-                    .foregroundStyle(connected > 0 ? .green : .secondary)
+                    .foregroundStyle(inRange > 0 ? .green : .secondary)
             }
         }
     }
@@ -115,7 +115,7 @@ struct ContentView: View {
         Section("Posicion calculada") {
             PositionCardView(
                 position: viewModel.state.filteredPos,
-                activeSensors: viewModel.state.connectedDevices.count
+                activeSensors: viewModel.state.inRangeSensorCount
             )
         }
     }

@@ -24,8 +24,15 @@ class PositionCoordinator {
     var accelerometerManager: AccelerometerManager?
 
     // Hysteresis: sensor re-enters computation at 85% of the exclusion threshold.
-    // This prevents rapid in/out toggling when a sensor sits right at the boundary.
     private let hysteresisRatio: Double = 0.85
+
+    // UI throttle: distance/position updates are batched and pushed at most 8 times/second.
+    // Connection events (connect/disconnect) bypass the throttle and push immediately.
+    // pendingExpiredIds accumulates sensors that timed out between throttled pushes so
+    // they are not lost if no further update arrives before the next push window.
+    private var lastUIUpdate: TimeInterval = 0
+    private let uiUpdateInterval: TimeInterval = 1.0 / 8.0  // 125ms → 8Hz max
+    private var pendingExpiredIds: [String] = []
 
     init(state: AppState, anchorsPositions: [String: Vector3D], connectionLimit: Int, connectionTimeout: Double) {
         self.state = state
@@ -53,6 +60,8 @@ class PositionCoordinator {
 }
 
 extension PositionCoordinator: UWBManagerDelegate {
+
+    // Connection events bypass the throttle — they are rare and must reflect immediately.
 
     func didDisconnect(deviceId: String) {
         _connectedDevices.remove(deviceId)
@@ -88,75 +97,65 @@ extension PositionCoordinator: UWBManagerDelegate {
     }
 
     func didUpdatePosition(deviceId: String, distance: Double) {
-        // 1. Update anchor with latest distance (always, regardless of filter)
+        // 1. Update anchor
         _anchors[deviceId] = getAnchor(deviceID: deviceId, distance: distance)
 
-        // 2. Distance filter with hysteresis — operates on data, never on the connection.
-        //    Sensors stay connected so the UWB session remains alive.
-        //    Hysteresis prevents rapid toggling when a sensor sits right at the boundary:
-        //      - Excluded → re-included only when distance drops to 85% of threshold
-        //      - Included → excluded when distance exceeds threshold
+        // 2. Distance filter with hysteresis
         if state.distanceFilterEnabled {
             let threshold = state.maxConnectionDistance
             if _outOfRangeDevices.contains(deviceId) {
-                // Currently excluded: re-include only when clearly within range
                 if distance <= threshold * hysteresisRatio {
                     _outOfRangeDevices.remove(deviceId)
-                    print("Sensor \(deviceId.suffix(8)) back in range (\(String(format: "%.2f", distance))m)")
                 }
             } else {
-                // Currently included: exclude when beyond threshold
                 if distance > threshold {
                     _outOfRangeDevices.insert(deviceId)
-                    print("Sensor \(deviceId.suffix(8)) out of range (\(String(format: "%.2f", distance))m > \(threshold)m)")
                 }
             }
         } else {
-            // Filter disabled: ensure nothing is excluded
             _outOfRangeDevices.remove(deviceId)
         }
 
-        // 3. Remove expired anchors and sync _connectedDevices for those that timed out.
-        //    Covers abrupt power-off where didDisconnect is never called.
+        // 3. Expire anchors that haven't reported within connectionTimeout.
+        //    Sync _connectedDevices so it doesn't diverge from _anchors.
         let now = Date().timeIntervalSince1970
-        var expiredIds: [String] = []
         _anchors = _anchors.filter { (id, a) in
             guard let ts = a.timestamp else { return true }
             let active = now - ts <= connectionTimeout
             if !active {
-                expiredIds.append(id)
+                _connectedDevices.remove(id)
+                _outOfRangeDevices.remove(id)
+                pendingExpiredIds.append(id)
             }
             return active
         }
-        for id in expiredIds {
-            _connectedDevices.remove(id)
-            _outOfRangeDevices.remove(id)
-        }
 
-        // 4. Trilateration uses only in-range anchors
-        let activeAnchors = _anchors.filter { !_outOfRangeDevices.contains($0.key) }
+        // 4. Throttle: only push to the main thread at most every 125ms (8Hz).
+        //    Expired IDs are accumulated so they are never silently dropped.
+        guard now - lastUIUpdate >= uiUpdateInterval else { return }
+        lastUIUpdate = now
 
-        // 5. Distances reported for all connected sensors (in and out of range)
+        // 5. Capture state for the closure (OperationQueue → main thread boundary)
+        let expiredToClean = pendingExpiredIds
+        pendingExpiredIds = []
+
         var newDistances: [String: Double] = [:]
-        for (id, a) in _anchors {
-            newDistances[id] = a.distance
-        }
+        for (id, a) in _anchors { newDistances[id] = a.distance }
 
-        // 6. Compute position with in-range anchors only
         var newFilteredPos: Vector2D? = nil
+        let activeAnchors = _anchors.filter { !_outOfRangeDevices.contains($0.key) }
         if activeAnchors.count >= 3 {
             let position = do_trilateration(anchors: activeAnchors)
             KalmanFilter.shared.update(z: position.toSIMD())
             let filtered = KalmanFilter.shared.getX()
             newFilteredPos = Vector2D(x: filtered[0], y: filtered[1])
-            print(String(describing: newFilteredPos))
         }
 
-        // 7. Push all UI updates to the main thread
-        let expiredIdsForUI = expiredIds
         let outOfRangeSnapshot = _outOfRangeDevices
+
+        // 6. Single batched main-thread update
         updateUI {
-            for id in expiredIdsForUI {
+            for id in expiredToClean {
                 self.state.connectedDevices.remove(id)
                 self.state.outOfRangeDevices.remove(id)
                 self.state.distances.removeValue(forKey: id)

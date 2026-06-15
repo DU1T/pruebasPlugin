@@ -21,8 +21,16 @@ class ViewModel {
     private var uwbManager: UWBManager?
     private var accelerometerManager: AccelerometerManager?
     private var queue: OperationQueue?
+    private var isStarted = false
 
-    init() {
+    // Empty init — initialization is deferred to startIfNeeded() so the
+    // main thread is not blocked before the first frame renders.
+    init() {}
+
+    /// Called once after the first frame renders. Safe to call multiple times.
+    func startIfNeeded() {
+        guard !isStarted else { return }
+        isStarted = true
         start(map: selectedMap)
     }
 
