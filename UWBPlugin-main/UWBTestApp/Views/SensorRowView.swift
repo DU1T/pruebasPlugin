@@ -9,8 +9,10 @@ struct SensorRowView: View {
     let rssi: Double?
     let distance: Double?
     let isConnected: Bool
+    let isOutOfRange: Bool
 
     private var status: SensorStatus {
+        if isConnected && isOutOfRange { return .outOfRange }
         if isConnected { return .connected }
         if rssi != nil { return .discovered }
         return .notSeen
@@ -38,8 +40,8 @@ struct SensorRowView: View {
                     Text(String(format: "%.2f m", distance))
                         .font(.system(.callout, design: .monospaced))
                         .bold()
-                        .foregroundStyle(.primary)
-                    Text("distancia")
+                        .foregroundStyle(isOutOfRange ? .orange : .primary)
+                    Text(isOutOfRange ? "fuera de rango" : "distancia")
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                 } else if let rssi {
@@ -60,12 +62,13 @@ struct SensorRowView: View {
     }
 
     private enum SensorStatus: Equatable {
-        case notSeen, discovered, connected
+        case notSeen, discovered, outOfRange, connected
 
         var label: String {
             switch self {
             case .notSeen:    return "No detectado"
             case .discovered: return "Descubierto"
+            case .outOfRange: return "Fuera de rango"
             case .connected:  return "Conectado"
             }
         }
@@ -74,6 +77,7 @@ struct SensorRowView: View {
             switch self {
             case .notSeen:    return .gray.opacity(0.35)
             case .discovered: return .yellow
+            case .outOfRange: return .orange
             case .connected:  return .green
             }
         }

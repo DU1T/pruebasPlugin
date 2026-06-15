@@ -72,7 +72,7 @@ struct ContentView: View {
             Text("Filtro de distancia")
         } footer: {
             if viewModel.state.distanceFilterEnabled {
-                Text("Sensores a más de \(String(format: "%.1f", viewModel.state.maxConnectionDistance))m se desconectan. Pueden reconectarse tras 5 segundos si vuelven al rango.")
+                Text("Sensores a más de \(String(format: "%.1f", viewModel.state.maxConnectionDistance))m se excluyen del cálculo de posición (naranja). Se re-incluyen automáticamente al volver al rango.")
                     .font(.caption)
             }
         }
@@ -93,7 +93,8 @@ struct ContentView: View {
                         sensorId: sensorId,
                         rssi: viewModel.state.discoveredDevices[sensorId],
                         distance: viewModel.state.distances[sensorId],
-                        isConnected: viewModel.state.connectedDevices.contains(sensorId)
+                        isConnected: viewModel.state.connectedDevices.contains(sensorId),
+                        isOutOfRange: viewModel.state.outOfRangeDevices.contains(sensorId)
                     )
                 }
             }
