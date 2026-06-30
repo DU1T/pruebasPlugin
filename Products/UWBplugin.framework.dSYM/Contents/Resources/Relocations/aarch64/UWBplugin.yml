@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/gustavogonzalez/Universidad/MegaProyecto/UWBTest/UWBplugin/Products/UWBplugin.framework/UWBplugin'
+relocations:     []
+...

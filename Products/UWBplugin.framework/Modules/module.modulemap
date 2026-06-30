@@ -1,0 +1,6 @@
+framework module UWBplugin {
+  umbrella header "UWBplugin.h"
+  export *
+
+  module * { export * }
+}
